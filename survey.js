@@ -81,8 +81,7 @@ $( document ).ready(function() {
     var result = {};
     url.replace(/[?&]{1}([^=&#]+)=([^&#]*)/g, function(s, k, v) { result[k] = decodeURIComponent(v); });
     return result;
-  }
-  //https://jsikim1.tistory.com/112
+  }//https://jsikim1.tistory.com/112 (by 김씩씩) 
   function init(){
     urlData = getURLParams(location.search);
     setAuto();
