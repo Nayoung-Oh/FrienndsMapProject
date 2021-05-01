@@ -84,8 +84,9 @@ $( document ).ready(function() {
   }//https://jsikim1.tistory.com/112 (by 김씩씩) 
   function init(){
     urlData = getURLParams(location.search);
-    if (urlData === none){
+    if (urlData.length === 0){
       urlData["prev"] = "first";
+      console.log("First");
     }
     setAuto();
   }
