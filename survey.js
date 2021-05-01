@@ -85,7 +85,7 @@ $( document ).ready(function() {
   function init(){
     urlData = getURLParams(location.search);
     if (urlData === none){
-      urlData[prev] = "first";
+      urlData["prev"] = "first";
     }
     setAuto();
   }
