@@ -14,7 +14,7 @@ $( document ).ready(function() {
   var cancel = document.getElementById("cancel");
   var content = document.getElementById("content");
   var copy = document.getElementById("copy");  
-  var url = "tmp";
+  var url = "https://nayoung-oh.github.io/FrienndsMapProject/";
   var urlData = [];
   var currentid = 0;
   var sentence = "친구 지도 프로젝트 (By KAIST 전산학부 오나영) 참여에 초대합니다. 자세한 설명은 아래 링크를 클릭하시면 확인하실 수 있습니다."
@@ -84,6 +84,9 @@ $( document ).ready(function() {
   }//https://jsikim1.tistory.com/112 (by 김씩씩) 
   function init(){
     urlData = getURLParams(location.search);
+    if (urlData === none){
+      urlData[prev] = "first";
+    }
     setAuto();
   }
   init();
