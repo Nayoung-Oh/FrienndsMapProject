@@ -1,8 +1,9 @@
 body {
     background-color: rgb(232, 251, 253);
 	font-family: 'Do Hyeon', sans-serif;
-	font-size: large;
 }
+
+/*your code here*/
 
 div.mid{
 	margin-top: 2%;
@@ -19,9 +20,4 @@ textarea{
 
 input{
 	width: 60%;
-}
-
-path{
-	fill: none;
-	stroke: black;
 }
