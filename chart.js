@@ -38,7 +38,7 @@ $( document ).ready(function() {
 
   const treeLayout = d3.tree().size([height, width]); // (*)
 
-  d3.json('./Log2.json').then(data => {
+  d3.json('https://github.com/Nayoung-Oh/FrienndsMapProject/blob/main/Log2.json').then(data => {
     const root = d3.hierarchy(data);  // (*)
     const links = treeLayout(root).links();  // (*)
     const linkPathGenerator = d3.linkHorizontal()  // (*)
