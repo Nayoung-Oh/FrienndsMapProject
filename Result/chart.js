@@ -1,13 +1,46 @@
 // https://bl.ocks.org/d3noob/8375092
 // https://velog.io/@takeknowledge/%EB%A1%9C%EC%BB%AC%EC%97%90%EC%84%9C-CORS-policy-%EA%B4%80%EB%A0%A8-%EC%97%90%EB%9F%AC%EA%B0%80-%EB%B0%9C%EC%83%9D%ED%95%98%EB%8A%94-%EC%9D%B4%EC%9C%A0-3gk4gyhreu
 $( document ).ready(function() {
-	const home = [127, 37];
-	mapboxgl.accessToken = ; //put your own accessToken
+
+	const prev = {
+		'type': 'FeatureCollection',
+		'features':[
+			{
+				"type": "Feature",
+				"properties": {
+					"count": 4
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [ 127.3573506, 36.3707172 ]
+				}
+			}, // add your own data
+			
+		]
+	};
+	const next = {
+		'type': 'FeatureCollection',
+		'features':[
+			{
+				"type": "Feature",
+				"properties": {
+					"count": 4
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [ 127.3573506, 36.3707172 ]
+				}
+			},// add your own data
+			
+		]
+	};
+	const home = [127, 36.6];
+	mapboxgl.accessToken = ;// Add your accessToken
 	var map = new mapboxgl.Map({
 	container: 'map', // container ID
 	style: 'mapbox://styles/mapbox/streets-v11', // style URL
 	center: home, // starting position [lng, lat]
-	zoom: 5 // starting zoom
+	zoom: 5.4 // starting zoom
 	});
 	var option = document.getElementById("person");
 	
@@ -36,30 +69,96 @@ $( document ).ready(function() {
 	
 	option.onchange = function(){
 		if (option.selectedIndex == 0){
-			update(null);
 			return;
 		}
-		treeData = treeDataList[option.selectedIndex - 1];
-		root = treeData[0];
-		root.x0 = height / 2;
-		root.y0 = 0;
-		update(root);
-		markerlist.forEach((marker) => marker.remove());
-		markerlist = [];
-		for (var i = 0; i < 4; i++){
-			if (map.getLayer('route'+i)) {
-				map.removeLayer('route'+i);
+		else if (option.selectedIndex <= 7){
+			treeData = treeDataList[option.selectedIndex - 1];
+			root = treeData[0];
+			root.x0 = height / 2;
+			root.y0 = 0;
+			update(root);
+			markerlist.forEach((marker) => marker.remove());
+			markerlist = [];
+			for (var i = 0; i < 4; i++){
+				if (map.getLayer('route'+i)) {
+					map.removeLayer('route'+i);
+				}
+				if (map.getSource('route'+i)) {
+					map.removeSource('route'+i);
+				}
 			}
-			if (map.getSource('route'+i)) {
-				map.removeSource('route'+i);
+			if (map.getLayer('link_count')) {
+				map.removeLayer('link_count');
 			}
+			if (map.getSource('rank')) {
+				map.removeSource('rank');
+			}
+			map.setCenter(home);
+			map.setZoom(5.4);
 		}
-		map.setCenter(home);
-		map.setZoom(5);
+		else if (option.selectedIndex == 8){
+			if (map.getLayer('link_count')) {
+				map.removeLayer('link_count');
+			}
+			if (map.getSource('rank')) {
+				map.removeSource('rank');
+			}
+			svg.selectAll("*").remove();
+			addCircle(prev);
+		}
+		else if (option.selectedIndex == 9){
+			if (map.getLayer('link_count')) {
+				map.removeLayer('link_count');
+			}
+			if (map.getSource('rank')) {
+				map.removeSource('rank');
+			}
+			svg.selectAll("*").remove();
+			addCircle(next);
+		}
+		
 	}
 
 	d3.select(self.frameElement).style("height", "500px");
 
+	function addCircle(source){
+		map.addSource('rank', {
+			type: 'geojson',
+			data: source
+
+		});
+		map.addLayer({
+			'id': 'link_count',
+			'type': 'circle',
+			'source': 'rank',
+			'paint': {
+			// make circles larger as the user zooms from z12 to z22
+			'circle-color': [
+				'match',
+				['get', 'count'],
+				1,
+				'cornflowerblue',
+				2,
+				'blue',
+				4,
+				'navy',
+				/* other */ 'white'
+				],
+			// color circles by ethnicity, using a match expression
+			// https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-match
+			'circle-radius': [
+			'match',
+			['get', 'count'],
+			1,
+			4,
+			2,
+			6,
+			4,
+			8,
+			/* other */ 0
+			]}
+		});
+	}
 	function update(source) {
 
 		// Compute the new tree layout.
