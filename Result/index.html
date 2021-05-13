@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>친구 지도 설문</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link href="./survey.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+  </head>
+  <body>
+    <script src="./Log.js"></script>
+    <script src="./chart.js"></script>
+    <div id ="body">
+      <div id='top'>
+        <h1> 친구 지도 프로젝트 </h1>
+        안녕하세요 KAIST 전산학부의 오나영입니다.
+        <br/>
+        지난 2021년 5월 2일 22:00부터 2021년 5월 9일 22:00 동안 진행되었던 프로젝트의 결과를 공개합니다.
+        <br />
+        참여한 사람이 5명 이하라 개인을 특정할 수 있는 데이터는 제외하였습니다.
+        <br />
+        참여해주신 여러분 감사합니다.
+        <br />
+        프로젝트에 사용한 코드를 github을 통해서 공개합니다.
+        <br />
+        <a href = "https://github.com/Nayoung-Oh/FrienndsMapProject">github 링크</a>
+        <br />
+        관심있으신 분들은 자유롭게 참여해주시기를 바랍니다.
+        <br />
+        github 코드 관련해서나 프로젝트 자체에 관해서 궁금한 점이 있으신 분은 다음 카카오톡 오픈 채팅으로 연락바랍니다.
+        <br />
+        <a href = "https://open.kakao.com/o/sSWJqZad">오픈 채팅 링크</a>
+        <br />
+        <div id='map' style='width: 400px; height: 300px;'></div>
+        <label for="person">사람을 선택해주세요</label>
+        <select id=person>
+          <option value="just" selected>--사람을 선택해주세요--</option>
+          <option value="P1">P1</option>
+          <option value="P2">P2</option>
+          <option value="P3">P3</option>
+          <option value="P4">P4</option>
+          <option value="P5">P5</option>
+          <option value="P6">P6</option>
+          <option value="P7">P7</option>
+        </select>
+      </div>
+      
+    </div>
+    
+  </body>
+</html>

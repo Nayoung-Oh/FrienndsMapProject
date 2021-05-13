@@ -1,0 +1,72 @@
+/*
+body {
+    background-color: rgb(232, 251, 253);
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: large;
+	height: 800px;
+	width: auto;
+}
+
+div.box{
+	margin-left: 10px;
+	margin-right: 10px;
+	height: 800px;
+	width: auto;
+}
+
+path {
+	fill: none;
+	stroke: black;
+  }
+  
+text {
+text-shadow: 
+	-1px -1px 3px white, 
+	-1px 1px 3px white, 
+	1px -1px 3px white,
+	1px 1px 3px white;
+pointer-events: none; //Prevent cursor for text
+}
+*/
+.node {
+	cursor: pointer;
+}
+
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 3px;
+}
+
+.node text {
+  font: 12px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
+}
+
+body {
+    background-color: rgb(232, 251, 253);
+	font-family: 'Do Hyeon', sans-serif;
+	font-size: large;
+	height: 800px;
+	width: auto;
+}
+
+select {
+    font-size: .9rem;
+    padding: 2px 5px;
+	color: black;
+}
+#top{
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+}
+#map{
+	border: solid;
+}
